@@ -6,7 +6,22 @@
   font-size: large;
 }
 
-#welcome{
+#welcome {
   margin-right: 10in;
   color: black;
+}
+
+#mydiv {
+  margin-left: 2in;
+  background-color: rgb(223, 99, 27);
+  border: black;
+  margin-top: 0.3in;
+}
+
+#list-item {
+  border: blue;
+  color: brown;
+  border-radius: 10%;
+  margin: 0.2in;
+  padding: 0.1in;
 }

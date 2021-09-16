@@ -1,0 +1,27 @@
+#header {
+  color: red;
+  text-align: center;
+  height: 2em;
+  vertical-align: middle;
+  font-size: large;
+}
+
+#welcome {
+  margin-right: 10in;
+  color: black;
+}
+
+#mydiv {
+  margin-left: 2in;
+  background-color: rgb(162, 185, 230);
+  border: black;
+  margin-top: 0.3in;
+}
+
+#list-item {
+  border: blue;
+  color: brown;
+  border-radius: 10%;
+  margin: 0.2in;
+  padding: 0.1in;
+}
