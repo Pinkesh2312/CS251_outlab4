@@ -1,8 +1,23 @@
 {% extends "users/base.html" %}
 
 {% block content %}
-{% if current_user == profile.user %}
-<h1>{{ profile.followers }}</h1>
+<div class="profile">
+<form method="POST">
+{% csrf_token %}
+{% if profile.user.last_name%}
+<h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
+{% else %}
+<h1>{{profile.user.first_name}}</h1>
 {% endif %}
-
+<h4 id="followers"> {{profile.followers}} followers</h4>
+<h4> profile last updated on: {{profile.lastUpdated}} {% if current_user == profile.user %}
+    <span><button type="submit" class="btn-btn-link">Update Now</button></span>    
+{% endif %}</h4>
+<ul>
+{% for repo in repositories %}
+<li id="list-item2">{{repo.name}} --> {{repo.stars}} stars</l1>
+{% endfor %}
+</ul>
+</form>
+<div>
 {% endblock content %}

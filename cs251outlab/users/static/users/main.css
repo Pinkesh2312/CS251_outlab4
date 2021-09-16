@@ -13,15 +13,29 @@
 
 #mydiv {
   margin-left: 2in;
-  background-color: rgb(223, 99, 27);
   border: black;
   margin-top: 0.3in;
 }
 
 #list-item {
-  border: blue;
+  font-size: larger;
   color: brown;
-  border-radius: 10%;
   margin: 0.2in;
   padding: 0.1in;
+}
+
+#list-item2 {
+  color: brown;
+}
+
+.profile {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#followers {
+  text-align: center;
+  font-size: x-large;
+  color: rgb(219, 9, 184);
+  margin-bottom: 0.3in;
 }

@@ -5,6 +5,7 @@ from .forms import UserRegisterForm
 from .data import profile_info
 from django.contrib.auth.models import User
 from .models import Profile, Repository
+from django.utils.timezone import now
 import requests
 from requests.exceptions import Timeout
 
@@ -15,7 +16,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             data = profile_info(username)
-            profile = Profile(username = username, followers = data["followers"], lastUpdated = data["last_updated"], user = User.objects.get(username = username))
+            profile = Profile(username = username, followers = data["followers"], lastUpdated = now, user = User.objects.get(username = username))
             profile.save()
             for repo in data["repos"].keys():
                 repository = Repository(name = repo, stars = data["repos"][repo], profile = profile)
@@ -36,6 +37,19 @@ def home(request):
 
 @login_required
 def display_profile(request, profile_id):
+    if request.method == "POST":
+        profile = Profile.objects.get(id=profile_id)
+        data = profile_info(profile.username)
+        profile.lastUpdated = now()
+        profile.followers = data["followers"]
+        profile.save()
+        repositories = Repository.objects.filter(profile = profile)
+        for repo in repositories:
+            repo.stars = data["repos"][repo.name]
+            repo.save()
+        context = {"profile":profile, "current_user":request.user, "repositories":repositories}
+        return render(request, 'users/profile.html', context = context)
     profile = Profile.objects.get(id=profile_id)
-    context = {"profile":profile, "current_user":request.user}
+    repositories = Repository.objects.filter(profile = profile)
+    context = {"profile":profile, "current_user":request.user, "repositories":repositories}
     return render(request, 'users/profile.html', context = context)

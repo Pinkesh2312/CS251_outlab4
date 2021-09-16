@@ -1,0 +1,5 @@
+1. https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog
+For learning django, we mostly followed Corey Schafers youtube tutorials. He posted the source code on his github account. The link for the same is given above.
+
+2. https://stackoverflow.com/questions/8466851/making-first-name-last-name-a-required-attribute-rather-than-an-optional-one-in
+We used this stackoverflow webpage to learn how to make some fields in a django form mandatory.
