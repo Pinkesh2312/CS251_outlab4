@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['127.0.0.1','cs251outlab.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',
@@ -148,3 +149,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+STATICFILES_DIRS = [BASE_DIR / 'cs251outlab/staticfiles']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
