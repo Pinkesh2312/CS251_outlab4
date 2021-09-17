@@ -1,1 +1,1 @@
-web: gunicorn cs251outlab.wsgi
+web: gunicorn cs251outlab.wsgi --log-file -
