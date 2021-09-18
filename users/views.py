@@ -32,7 +32,7 @@ def register(request):
 @login_required
 def home(request):
     users = Profile.objects.all()
-    context = {"users":users}
+    context = {"users":users, "current_user":Profile.objects.get(user= request.user)}
     return render(request, 'users/home.html', context= context)
 
 @login_required
@@ -47,9 +47,9 @@ def display_profile(request, profile_id):
         for repo in repositories:
             repo.stars = data["repos"][repo.name]
             repo.save()
-        context = {"profile":profile, "current_user":request.user, "repositories":repositories}
+        context = {"profile":profile, "current_user":request.user, "repositories":repositories, "current_profile":Profile.objects.get(user= request.user)}
         return render(request, 'users/profile.html', context = context)
     profile = Profile.objects.get(id=profile_id)
     repositories = Repository.objects.filter(profile = profile)
-    context = {"profile":profile, "current_user":request.user, "repositories":repositories}
+    context = {"profile":profile, "current_user":request.user, "repositories":repositories, "current_profile":Profile.objects.get(user= request.user)}
     return render(request, 'users/profile.html', context = context)

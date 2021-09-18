@@ -1,4 +1,9 @@
 {% extends "users/base.html" %}
+{% block linkToProfile %}
+<li class="nav-item">
+    <a class="nav-item nav-link" href="/{{ current_user.id }}">My Profile</a>
+</li>
+{% endblock linkToProfile %}
 
 {% block content %}
 <div id="mydiv">

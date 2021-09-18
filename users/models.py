@@ -7,6 +7,7 @@ class Profile(models.Model):
     followers = models.IntegerField()
     lastUpdated = models.DateTimeField(auto_now_add=True)
     user = OneToOneField(User, on_delete=models.CASCADE)
+    
 
 class Repository(models.Model):
     name = models.TextField(max_length=50)
